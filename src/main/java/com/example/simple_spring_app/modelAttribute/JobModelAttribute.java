@@ -1,6 +1,6 @@
 package com.example.simple_spring_app.modelAttribute;
 
-public class JobModeAttribute {
+public class JobModelAttribute {
     private int Id;
 
     private String Date;
@@ -15,7 +15,7 @@ public class JobModeAttribute {
 
     private String Comments;
 
-    public JobModeAttribute() {
+    public JobModelAttribute() {
     }
 
     public int getId() {
