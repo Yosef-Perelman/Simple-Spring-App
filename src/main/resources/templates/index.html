@@ -5,87 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job List</title>
     <style>
-        /* Center elements horizontally */
+        /* Flexbox styling for the body to ensure footer sticks to the bottom */
         body {
-          display: flex;
-          justify-content: center;
-          margin: 0;
-          font-family: sans-serif;
-          min-height: 100vh; /* Ensures viewport fills entire height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh; /* Ensures viewport fills entire height */
+            background-color: #f0f0f0;
         }
 
         /* Style for the content container */
         .content {
-          display: flex; /* Makes content a flex container */
-          flex-direction: column; /* Stacks elements vertically */
-          align-items: center; /* Centers content horizontally */
+            display: flex; /* Makes content a flex container */
+            flex-direction: column; /* Stacks elements vertically */
+            align-items: center; /* Centers content horizontally */
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
         }
 
-        /* Remove vertical centering for table content */
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Style for the add job link */
+        .add-job-btn {
+            margin-bottom: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .add-job-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the table */
         table {
-          border-collapse: collapse;
-          width: 80%;
-          margin: 20px auto;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
         }
 
         th, td {
-          padding: 10px;
-          border: 1px solid #ddd;
-          text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
         }
 
         th {
-          background-color: #f2f2f2;
+            background-color: #007bff;
+            color: #fff;
         }
 
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Style for the footer */
         .footer {
-          text-align: center;
-          font-size: 0.8em;
-          position: absolute; /* Positions footer absolutely */
-          bottom: 10px; /* Positions footer 10px from bottom */
-          width: 100%; /* Stretches footer across entire width */
+            text-align: center;
+            font-size: 0.8em;
+            padding: 10px 0;
+            background: #fff;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
         }
 
-        .add-job-btn {
-          margin-bottom: 20px; /* Adds space below button */
+        .cellResult {
+            padding: 10px;
         }
     </style>
 </head>
 <body>
 <div class="content">
-    <h1>Job List</h1>
-    <div><a href="#" title="Add a new job" th:href="@{/add}">Add New Job</a></div>
+    <h1>List of jobs</h1>
+    <a href="#" class="add-job-btn" title="Add a new job" th:href="@{/add}">Add New Job</a>
 
     <div class="tableResult" th:if="${jobs != null && jobs.isEmpty() != true}">
-        <div class="rowResultHeader">
-            <div class="cellResult" th:text="ID"></div>
-            <div class="cellResult" th:text="DATE"></div>
-            <div class="cellResult" th:text="'COMPANY NAME'"></div>
-            <div class="cellResult" th:text="'JOB TITLE'"></div>
-            <div class="cellResult" th:text="LINK"></div>
-            <div class="cellResult" th:text="'THROUGH WHOM'"></div>
-            <div class="cellResult" th:text="COMMENTS"></div>
-        </div>
-        <div class="rowResult" th:each="job : ${jobs}">
-            <div class="cellResult" th:text="${job.Id}"></div>
-            <div class="cellResult" th:text="${job.Date}"></div>
-            <div class="cellResult" th:text="${job.Company_Name}"></div>
-            <div class="cellResult" th:text="${job.Job_Title}"></div>
-            <div class="cellResult" th:text="${job.Link}"></div>
-            <div class="cellResult" th:text="${job.through_whom}"></div>
-            <div class="cellResult" th:text="${job.Comments}"></div>
-        </div>
+        <table>
+            <thead>
+            <tr>
+                <th th:text="ID"></th>
+                <th th:text="DATE"></th>
+                <th th:text="'COMPANY NAME'"></th>
+                <th th:text="'JOB TITLE'"></th>
+                <th th:text="LINK"></th>
+                <th th:text="'THROUGH WHOM'"></th>
+                <th th:text="COMMENTS"></th>
+            </tr>
+            </thead>
+            <tbody th:each="job : ${jobs}">
+            <tr>
+                <td th:text="${job.Id}"></td>
+                <td th:text="${job.Date}"></td>
+                <td th:text="${job.Company_Name}"></td>
+                <td th:text="${job.Job_Title}"></td>
+                <td><a th:href="${job.Link}" th:text="${job.Link}"></a></td>
+                <td th:text="${job.through_whom}"></td>
+                <td th:text="${job.Comments}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <div class="tableResult" th:if="${jobs == null || jobs.isEmpty() == true}">
-        <div class="rowResultHeader">
-            <div class="cellResult" th:text="ID"></div>
-            <div class="cellResult" th:text="DATE"></div>
-            <div class="cellResult" th:text="'COMPANY NAME'"></div>
-            <div class="cellResult" th:text="'JOB TITLE'"></div>
-            <div class="cellResult" th:text="LINK"></div>
-            <div class="cellResult" th:text="'THROUGH WHOM'"></div>
-            <div class="cellResult" th:text="COMMENTS"></div>
-        </div>
+        <table>
+            <thead>
+            <tr>
+                <th th:text="ID"></th>
+                <th th:text="DATE"></th>
+                <th th:text="'COMPANY NAME'"></th>
+                <th th:text="'JOB TITLE'"></th>
+                <th th:text="LINK"></th>
+                <th th:text="'THROUGH WHOM'"></th>
+                <th th:text="COMMENTS"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7" style="text-align: center;">No jobs available</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
