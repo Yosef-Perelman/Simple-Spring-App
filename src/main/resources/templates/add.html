@@ -4,36 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Job</title>
+    <style>
+        /* Center elements horizontally and add a background color */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh; /* Ensures viewport fills entire height */
+            background-color: #f0f0f0;
+        }
+
+        /* Style for the content container */
+        .content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"], button[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="button"] {
+            background-color: #6c757d;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button[type="button"]:hover {
+            background-color: #5a6268;
+        }
+    </style>
 </head>
 <body>
-<h2>Add Job</h2>
+<div class="content">
+    <h2>Add Job</h2>
+    <form action="#" method="post" th:action="@{/add-job}" th:object="${jobModelAttribute}">
+        <label for="id">Id:</label>
+        <input type="text" id="id" th:field="*{Id}" required>
 
-<form action="#" method="post" th:action="@{/add-job}" th:object="${jobModelAttribute}">
-    <label>Id:</label>
-    <input type="text" th:field="*{Id}" required><br>
+        <label for="date">Date:</label>
+        <input type="text" id="date" th:field="*{Date}" required>
 
-    <label>Date:</label>
-    <input type="text" th:field="*{Date}" required><br>
+        <label for="companyName">Company Name:</label>
+        <input type="text" id="companyName" th:field="*{Company_Name}" required>
 
-    <label>Company Name:</label>
-    <input type="text" th:field="*{Company_Name}" required><br>
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle" th:field="*{Job_Title}">
 
-    <label>Job_Title:</label>
-    <input type="text" th:field="*{Job_Title}" required><br>
+        <label for="link">Link:</label>
+        <input type="text" id="link" th:field="*{Link}" required>
 
-    <label>Link:</label>
-    <input type="text" th:field="*{Link}" required><br>
+        <label for="throughWhom">Through where I sent the resume:</label>
+        <input type="text" id="throughWhom" th:field="*{through_whom}" required>
 
-    <label>through_whom:</label>
-    <input type="text" th:field="*{through_whom}" required><br>
+        <label for="comments">Comments:</label>
+        <input type="text" id="comments" th:field="*{Comments}">
 
-    <label>Comments:</label>
-    <input type="text" th:field="*{Comments}" required><br>
-
-
-    <button type="submit" value="ADD">Add Job</button>
-    <button type="button" onclick="window.location.href='http://localhost:8080/'">Return</button>
-</form>
-
+        <button type="submit" value="ADD">Add Job</button>
+        <button type="button" onclick="window.location.href='http://localhost:8080/'">Return</button>
+    </form>
+</div>
 </body>
 </html>
