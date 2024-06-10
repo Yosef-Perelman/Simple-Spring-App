@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job List</title>
+    <style>
+        /* Center elements horizontally */
+        body {
+          display: flex;
+          justify-content: center;
+          margin: 0;
+          font-family: sans-serif;
+          min-height: 100vh; /* Ensures viewport fills entire height */
+        }
+
+        /* Style for the content container */
+        .content {
+          display: flex; /* Makes content a flex container */
+          flex-direction: column; /* Stacks elements vertically */
+          align-items: center; /* Centers content horizontally */
+        }
+
+        /* Remove vertical centering for table content */
+        table {
+          border-collapse: collapse;
+          width: 80%;
+          margin: 20px auto;
+        }
+
+        th, td {
+          padding: 10px;
+          border: 1px solid #ddd;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f2f2f2;
+        }
+
+        .footer {
+          text-align: center;
+          font-size: 0.8em;
+          position: absolute; /* Positions footer absolutely */
+          bottom: 10px; /* Positions footer 10px from bottom */
+          width: 100%; /* Stretches footer across entire width */
+        }
+
+        .add-job-btn {
+          margin-bottom: 20px; /* Adds space below button */
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h1>Job List</h1>
+    <button class="add-job-btn">Add Job</button>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Submission Date</th>
+            <th>Company Name</th>
+            <th>Job Title</th>
+            <th>Link</th>
+            <th>Submitted Through</th>
+            <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>2024-06-08</td>
+            <td>Example Company</td>
+            <td>Software Engineer</td>
+            <td><a href="#">Job Link</a></td>
+            <td>LinkedIn</td>
+            <td>Great opportunity!</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<p class="footer">Created by Yosef Perelman, 2024</p>
+</body>
+</html>
