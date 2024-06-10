@@ -1,6 +1,5 @@
 package com.example.simple_spring_app.controller;
 
-import com.example.simple_spring_app.model.Job;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
