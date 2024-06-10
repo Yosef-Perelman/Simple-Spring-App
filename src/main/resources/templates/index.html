@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,26 +54,39 @@
 <body>
 <div class="content">
     <h1>Job List</h1>
-    <button class="add-job-btn" onclick="window.location.href='http://localhost:8080/add'">Add Job</button>
+    <div><a href="#" title="Add a new job" th:href="@{/add}">Add New Job</a></div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Company Name</th>
-            <th>Job Title</th>
-            <th>Link</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>Example Company</td>
-            <td>Software Engineer</td>
-            <td><a href="#">Job Link</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="tableResult" th:if="${jobs != null && jobs.isEmpty() != true}">
+        <div class="rowResultHeader">
+            <div class="cellResult" th:text="ID"></div>
+            <div class="cellResult" th:text="DATE"></div>
+            <div class="cellResult" th:text="'COMPANY NAME'"></div>
+            <div class="cellResult" th:text="'JOB TITLE'"></div>
+            <div class="cellResult" th:text="LINK"></div>
+            <div class="cellResult" th:text="'THROUGH WHOM'"></div>
+            <div class="cellResult" th:text="COMMENTS"></div>
+        </div>
+        <div class="rowResult" th:each="job : ${jobs}">
+            <div class="cellResult" th:text="${job.Id}"></div>
+            <div class="cellResult" th:text="${job.Date}"></div>
+            <div class="cellResult" th:text="${job.Company_Name}"></div>
+            <div class="cellResult" th:text="${job.Job_Title}"></div>
+            <div class="cellResult" th:text="${job.Link}"></div>
+            <div class="cellResult" th:text="${job.through_whom}"></div>
+            <div class="cellResult" th:text="${job.Comments}"></div>
+        </div>
+    </div>
+    <div class="tableResult" th:if="${jobs == null || jobs.isEmpty() == true}">
+        <div class="rowResultHeader">
+            <div class="cellResult" th:text="ID"></div>
+            <div class="cellResult" th:text="DATE"></div>
+            <div class="cellResult" th:text="'COMPANY NAME'"></div>
+            <div class="cellResult" th:text="'JOB TITLE'"></div>
+            <div class="cellResult" th:text="LINK"></div>
+            <div class="cellResult" th:text="'THROUGH WHOM'"></div>
+            <div class="cellResult" th:text="COMMENTS"></div>
+        </div>
+    </div>
 </div>
 
 <p class="footer">Created by Yosef Perelman, 2024</p>

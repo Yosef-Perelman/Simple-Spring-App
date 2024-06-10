@@ -76,7 +76,7 @@ public class JobModelAttribute {
 
     @Override
     public String toString() {
-        return "JobModeAttribute{" +
+        return "JobModelAttribute{" +
                 "Id=" + Id +
                 ", Date='" + Date + '\'' +
                 ", Company_Name='" + Company_Name + '\'' +

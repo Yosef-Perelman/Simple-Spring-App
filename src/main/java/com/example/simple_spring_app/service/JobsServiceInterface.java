@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface JobsServiceInterface {
 
-    JobModelAttribute add_job(JobModelAttribute jobModelAttribute);
+    void add_job(JobModelAttribute jobModelAttribute);
 
     List<JobModelAttribute> find_all_jobs();
 

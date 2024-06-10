@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +8,30 @@
 <body>
 <h2>Add Job</h2>
 
-<form action="#">
-    <label for="company">Company Name:</label>
-    <input type="text" id="company" name="company" required><br>
+<form action="#" method="post" th:action="@{/add-job}" th:object="${jobModelAttribute}">
+    <label>Id:</label>
+    <input type="text" th:field="*{Id}" required><br>
 
-    <label for="jobTitle">Job Title:</label>
-    <input type="text" id="jobTitle" name="jobTitle" required><br>
+    <label>Date:</label>
+    <input type="text" th:field="*{Date}" required><br>
 
-    <label for="link">Link:</label>
-    <input type="url" id="link" name="link"><br><br>
+    <label>Company Name:</label>
+    <input type="text" th:field="*{Company_Name}" required><br>
 
-    <button type="submit">Add Job</button>
+    <label>Job_Title:</label>
+    <input type="text" th:field="*{Job_Title}" required><br>
+
+    <label>Link:</label>
+    <input type="text" th:field="*{Link}" required><br>
+
+    <label>through_whom:</label>
+    <input type="text" th:field="*{through_whom}" required><br>
+
+    <label>Comments:</label>
+    <input type="text" th:field="*{Comments}" required><br>
+
+
+    <button type="submit" value="ADD">Add Job</button>
     <button type="button" onclick="window.location.href='http://localhost:8080/'">Return</button>
 </form>
 
