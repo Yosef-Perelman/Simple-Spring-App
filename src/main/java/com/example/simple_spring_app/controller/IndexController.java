@@ -42,15 +42,3 @@ public class IndexController {
     }
 
 }
-
-
-// For future tests:
-//        JobModelAttribute job1 = new JobModelAttribute();
-//        job1.setId(1);
-//        job1.setComments("hi");
-//        job1.setDate("12345");
-//        job1.setLink("sdfsdf");
-//        job1.setCompany_Name("sdfsd");
-//        job1.setThrough_whom("me");
-//        job1.setJob_Title("hi");
-//        jobsService.add_job(job1);
