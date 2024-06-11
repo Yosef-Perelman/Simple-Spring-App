@@ -25,7 +25,6 @@ class SimpleSpringAppApplicationTests {
 		System.out.println("---------------------------------------");
 		if (jobsService.find_all_jobs().isEmpty()) {
 			JobModelAttribute job1 = new JobModelAttribute();
-			job1.setId(1);
 			job1.setDate("12.3.2024");
 			job1.setCompany_Name("INTEL");
 			job1.setJob_Title("BACKEND");
@@ -33,7 +32,6 @@ class SimpleSpringAppApplicationTests {
 			job1.setThrough_whom("linkedin");
 			job1.setComments("Want's AWS.");
 			JobModelAttribute job2 = new JobModelAttribute();
-			job2.setId(2);
 			job2.setDate("11.4.2024");
 			job2.setCompany_Name("PIZZA");
 			job2.setJob_Title("DELIVERY");
@@ -41,7 +39,6 @@ class SimpleSpringAppApplicationTests {
 			job2.setThrough_whom("linkedin");
 			job2.setComments("HIGH SALARY.");
 			JobModelAttribute job3 = new JobModelAttribute();
-			job3.setId(3);
 			job3.setDate("30.1.2024");
 			job3.setCompany_Name("Apple");
 			job3.setJob_Title("Steve Jobs");
@@ -52,6 +49,8 @@ class SimpleSpringAppApplicationTests {
 			jobsService.add_job(job2);
 			jobsService.add_job(job3);
 			assertThat(jobsService.find_all_jobs().size() == 3).isTrue();
+			jobsService.delete_job(job1.getId());
+			assertThat(jobsService.find_all_jobs().size() == 2).isTrue();
 			assertThat(job2.toString().equals("JobModelAttribute{" +
 					"Id=" + job2.getId() +
 					", Date='" + job2.getDate() + '\'' +
@@ -69,5 +68,4 @@ class SimpleSpringAppApplicationTests {
 		System.out.println("---------------------------------------");
 		System.out.println("---------------------------------------");
 	}
-
 }

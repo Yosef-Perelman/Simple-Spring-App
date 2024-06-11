@@ -6,6 +6,7 @@ import com.example.simple_spring_app.service.JobsServiceInterface;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,9 +18,7 @@ public class IndexController {
     private JobsServiceInterface jobsService;
 
     public IndexController(JobsServiceInterface jobsService) {
-        //this.jobsService = new JobService();
         this.jobsService = jobsService;
-
     }
 
     @RequestMapping(value={"", "/", "/index", "/index.html"})
@@ -41,10 +40,9 @@ public class IndexController {
         return "redirect:/";
     }
 
-    @PostMapping("/delete-job")
-    public String deleteJob(@ModelAttribute("JobModelAttribute") JobModelAttribute jobModelAttribute) {
-        this.jobsService.delete_job(jobModelAttribute.getId());
+    @PostMapping("/delete-job/{id}")
+    public String deleteJob(@PathVariable int id) {
+        this.jobsService.delete_job(id);
         return "redirect:/";
     }
-
 }
