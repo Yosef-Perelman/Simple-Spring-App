@@ -51,7 +51,7 @@ class SimpleSpringAppApplicationTests {
 			jobsService.add_job(job1);
 			jobsService.add_job(job2);
 			jobsService.add_job(job3);
-			assertThat((int)jobsService.find_all_jobs().size() == 3).isTrue();
+			assertThat(jobsService.find_all_jobs().size() == 3).isTrue();
 			assertThat(job2.toString().equals("JobModelAttribute{" +
 					"Id=" + job2.getId() +
 					", Date='" + job2.getDate() + '\'' +

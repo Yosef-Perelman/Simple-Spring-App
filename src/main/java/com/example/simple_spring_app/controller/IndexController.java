@@ -37,8 +37,13 @@ public class IndexController {
 
     @PostMapping("/add-job")
     public String addJob(@ModelAttribute("JobModelAttribute") JobModelAttribute jobModelAttribute) {
-        jobModelAttribute.setId((int)jobsService.find_all_jobs().size() + 1);
         this.jobsService.add_job(jobModelAttribute);
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete-job")
+    public String deleteJob(@ModelAttribute("JobModelAttribute") JobModelAttribute jobModelAttribute) {
+        this.jobsService.delete_job(jobModelAttribute.getId());
         return "redirect:/";
     }
 
