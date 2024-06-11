@@ -10,6 +10,8 @@ public interface JobsServiceInterface {
 
     void add_job(JobModelAttribute jobModelAttribute);
 
+    void delete_job(int id);
+
     List<JobModelAttribute> find_all_jobs();
 
 }

@@ -21,6 +21,9 @@ public class JobService implements JobsServiceInterface{
     }
 
     @Override
+    public void delete_job(int id){}
+
+    @Override
     public List<JobModelAttribute> find_all_jobs(){
         return jobs;
     }
