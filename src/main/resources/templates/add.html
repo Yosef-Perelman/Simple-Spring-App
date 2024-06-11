@@ -51,6 +51,15 @@
             box-sizing: border-box;
         }
 
+        input[type="url"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         button[type="submit"], button[type="button"] {
             padding: 10px 20px;
             border: none;
@@ -97,12 +106,12 @@
         <input type="text" id="jobTitle" th:field="*{Job_Title}">
 
         <label for="link">Link:</label>
-        <input type="text" id="link" th:field="*{Link}" required>
+        <input type="url" id="link" th:field="*{Link}" required>
 
         <label for="throughWhom">Through where I sent the resume:</label>
         <input type="text" id="throughWhom" th:field="*{through_whom}" required>
 
-        <label for="comments">Comments:</label>
+        <label for="comments">Comments (Optional):</label>
         <input type="text" id="comments" th:field="*{Comments}">
 
         <button type="submit" value="ADD">Add Job</button>

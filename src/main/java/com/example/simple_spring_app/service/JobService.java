@@ -21,9 +21,10 @@ public class JobService implements JobsServiceInterface{
     @Override
     public void add_job(JobModelAttribute jobModelAttribute){
         jobModelAttribute.setId(jobs.size() + 1);
-        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
         String str = ft.format(new Date());
         jobModelAttribute.setDate(str);
+        //jobModelAttribute.setLink((String)jobModelAttribute.getLink());
         jobs.add(jobModelAttribute);
     }
 
