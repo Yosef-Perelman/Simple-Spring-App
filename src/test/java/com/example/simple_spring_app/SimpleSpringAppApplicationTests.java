@@ -31,26 +31,43 @@ class SimpleSpringAppApplicationTests {
 			job1.setJob_Title("BACKEND");
 			job1.setLink("www.google.com");
 			job1.setThrough_whom("linkedin");
-			job1.setComments("Want's aws.");
+			job1.setComments("Want's AWS.");
 			JobModelAttribute job2 = new JobModelAttribute();
-			job1.setId(2);
-			job1.setDate("11.4.2024");
-			job1.setCompany_Name("PIZZA");
-			job1.setJob_Title("DELIVERY");
-			job1.setLink("www.google.com");
-			job1.setThrough_whom("linkedin");
-			job1.setComments("HIGH SALARY.");
+			job2.setId(2);
+			job2.setDate("11.4.2024");
+			job2.setCompany_Name("PIZZA");
+			job2.setJob_Title("DELIVERY");
+			job2.setLink("www.google.com");
+			job2.setThrough_whom("linkedin");
+			job2.setComments("HIGH SALARY.");
 			JobModelAttribute job3 = new JobModelAttribute();
-			job1.setId(3);
-			job1.setDate("30.1.2024");
-			job1.setCompany_Name("sdfsd");
-			job1.setJob_Title("hi");
-			job1.setLink("www.google.com");
-			job1.setThrough_whom("linkedin");
-			job1.setComments("Want's aws.");
-
+			job3.setId(3);
+			job3.setDate("30.1.2024");
+			job3.setCompany_Name("Apple");
+			job3.setJob_Title("Steve Jobs");
+			job3.setLink("www.apple.com");
+			job3.setThrough_whom("Grandpa");
+			job3.setComments("Iphone.");
+			jobsService.add_job(job1);
+			jobsService.add_job(job2);
+			jobsService.add_job(job3);
+			assertThat((int)jobsService.find_all_jobs().size() == 3).isTrue();
+			assertThat(job2.toString().equals("JobModelAttribute{" +
+					"Id=" + job2.getId() +
+					", Date='" + job2.getDate() + '\'' +
+					", Company_Name='" + job2.getCompany_Name() + '\'' +
+					", Job_Title='" + job2.getJob_Title() + '\'' +
+					", Link='" + job2.getLink() + '\'' +
+					", through_whom='" + job2.getThrough_whom() + '\'' +
+					", Comments='" + job2.getComments() + '\'' +
+					'}')).isTrue();
 
 		}
+		System.out.println("---------------------------------------");
+		System.out.println("---------------------------------------");
+		System.out.println("TESTS FINISHED");
+		System.out.println("---------------------------------------");
+		System.out.println("---------------------------------------");
 	}
 
 }
