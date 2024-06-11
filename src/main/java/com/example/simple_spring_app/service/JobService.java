@@ -3,9 +3,11 @@ package com.example.simple_spring_app.service;
 import com.example.simple_spring_app.modelAttribute.JobModelAttribute;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Date;
 
 @Service
 public class JobService implements JobsServiceInterface{
@@ -19,6 +21,9 @@ public class JobService implements JobsServiceInterface{
     @Override
     public void add_job(JobModelAttribute jobModelAttribute){
         jobModelAttribute.setId(jobs.size() + 1);
+        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
+        String str = ft.format(new Date());
+        jobModelAttribute.setDate(str);
         jobs.add(jobModelAttribute);
     }
 
